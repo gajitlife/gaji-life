@@ -33,42 +33,38 @@
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            /* [修改] 上方間距由 20px 改為 10px */
             padding: 10px 20px 40px 20px;
             display: grid;
             grid-template-columns: 2.5fr 1fr;
             gap: 40px; /* 稍微縮小左右欄間距 */
         }
 
-        /* --- 手機版特別優化 (關鍵修改) --- */
+        /* --- 手機版特別優化 --- */
         @media (max-width: 768px) {
             .container { 
                 grid-template-columns: 1fr; 
                 gap: 20px; 
-                padding-top: 0; /* 手機版上方完全不留白 */
+                padding-top: 0; 
             }
             
             header {
-                /* 手機版表頭壓到最扁 */
                 padding: 20px 0 10px 0 !important;
                 margin-bottom: 10px !important;
                 border-bottom: 1px dashed var(--line-gray-blue);
             }
 
             h1 {
-                font-size: 2.2rem !important; /* 手機標題稍微調整，避免換行佔空間 */
+                font-size: 2.2rem !important; 
             }
             
-            /* 手機版把頂部裝飾圓點藏起來，節省空間 */
             header::before { display: none; } 
         }
 
-        /* --- 3. 表頭設計 (緊湊化) --- */
+        /* --- 3. 表頭設計 --- */
         header {
             text-align: center;
-            /* [修改] 大幅減少上下留白 */
             padding: 20px 0 10px 0; 
-            margin-bottom: 20px; /* 與下方內容距離縮短 */
+            margin-bottom: 20px; 
             position: relative;
         }
 
@@ -76,7 +72,7 @@
             color: var(--text-main);
             font-weight: 600;
             font-size: 2.8rem; 
-            margin-bottom: 0; /* 移除標題下方預設邊距 */
+            margin-bottom: 0; 
             display: inline-block; 
             position: relative;    
             z-index: 1;
@@ -98,11 +94,11 @@
             transform: rotate(-1deg); 
         }
 
-        /* 頂部裝飾小圓點 (電腦版保留，位置下移) */
+        /* 頂部裝飾小圓點 */
         header::before {
             content: '';
             position: absolute;
-            top: -5px; /* 往上移一點，避免佔用文字空間 */
+            top: -5px; 
             left: 50%;
             transform: translateX(-50%);
             width: 12px;
@@ -115,7 +111,7 @@
         .subtitle {
             color: var(--accent-peach-text); 
             font-size: 1.1rem; 
-            margin-top: 5px; /* 副標題緊貼主標題 */
+            margin-top: 5px; 
             font-weight: 500;
             letter-spacing: 0.05em;
         }
@@ -140,21 +136,21 @@
 
         .article h2 {
             font-size: 1.8rem;
-            margin-bottom: 10px; /* 標題與日期靠近一點 */
+            margin-bottom: 10px; 
             color: var(--text-main);
             font-weight: 600;
-            margin-top: 0; /* 確保文章標題緊貼上方 */
+            margin-top: 0; 
         }
         
         .article p {
             margin-bottom: 0;
-            font-size: 1.15rem; /* 內文字體再微調大一點，更清楚 */
-            text-align: justify; /* 左右對齊，閱讀更整齊 */
+            font-size: 1.15rem; 
+            text-align: justify; 
         }
 
         .article-meta {
             color: var(--text-light);
-            font-size: 1rem; /* 日期文字放大 */
+            font-size: 1rem; 
             margin-bottom: 15px;
             display: flex;
             align-items: center;
@@ -276,13 +272,7 @@
         
         <main>
             <div id="feed">
-                <article class="article">
-                    <h2>午後的咖啡時光</h2>
-                    <div class="article-meta"><span class="dot"></span> 2025.10.30</div>
-                    <p>今天陽光很好，把辦公桌移到了窗邊。泡了一杯拿鐵，看著窗外的雲發呆了十分鐘。這就是所谓的「留白」吧，給生活一點喘息的空間。</p>
-                    <img src="https://placehold.co/800x500/F3F4F6/AAA?text=Relaxing+View" alt="風景" class="article-img">
-                </article>
-            </div>
+                </div>
 
             <section class="post-editor" id="adminPanel">
                 <h3>✎ 撰寫新日常</h3>
