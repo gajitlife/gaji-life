@@ -12,7 +12,7 @@
             --text-light: #666666;         
             --accent-sage: #8F9779;        
             --accent-peach: #FFDAB9;       
-            --accent-peach-text: #F4A460;  /* 深柔和桃色 (文字用) */
+            --accent-peach-text: #F4A460;  
             --line-gray-blue: #E3E6E8;     
             --radius-soft: 12px;
             --spacing-loose: 40px;
@@ -25,8 +25,8 @@
             font-family: "Helvetica Neue", Helvetica, Arial, "PingFang TC", "Microsoft JhengHei", sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-size: 18px; /* 維持大字體 */
-            line-height: 1.6; /* 行距稍微收緊一點點，讓內容更集中 */
+            font-size: 18px; 
+            line-height: 1.6; 
             letter-spacing: 0.05em;
         }
 
@@ -36,10 +36,10 @@
             padding: 10px 20px 40px 20px;
             display: grid;
             grid-template-columns: 2.5fr 1fr;
-            gap: 40px; /* 稍微縮小左右欄間距 */
+            gap: 40px; 
         }
 
-        /* --- 手機版特別優化 --- */
+        /* --- 手機版優化 --- */
         @media (max-width: 768px) {
             .container { 
                 grid-template-columns: 1fr; 
@@ -53,10 +53,7 @@
                 border-bottom: 1px dashed var(--line-gray-blue);
             }
 
-            h1 {
-                font-size: 2.2rem !important; 
-            }
-            
+            h1 { font-size: 2.2rem !important; }
             header::before { display: none; } 
         }
 
@@ -79,7 +76,6 @@
             line-height: 1.2;
         }
 
-        /* 粉紅色螢光筆效果 */
         h1::after {
             content: '';
             position: absolute;
@@ -94,7 +90,6 @@
             transform: rotate(-1deg); 
         }
 
-        /* 頂部裝飾小圓點 */
         header::before {
             content: '';
             position: absolute;
@@ -117,7 +112,6 @@
         }
 
         /* --- 4. 內容區 --- */
-        
         .article {
             margin-bottom: 50px; 
             padding-bottom: 30px;
@@ -165,52 +159,6 @@
             display: inline-block;
         }
 
-        /* 發文區塊 */
-        .post-editor {
-            background: #FAFAFA;
-            padding: 25px;
-            border-radius: var(--radius-soft);
-            margin-top: 30px; 
-            margin-bottom: 50px;
-            border: 1px dashed var(--line-gray-blue);
-        }
-
-        .post-editor h3 {
-            color: var(--accent-sage);
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
-            border: 1px solid var(--line-gray-blue);
-            border-radius: 8px;
-            background: #fff;
-            color: var(--text-main);
-            font-size: 1rem;
-            outline: none;
-            transition: border 0.3s;
-        }
-
-        input:focus, textarea:focus {
-            border-color: var(--accent-sage);
-        }
-
-        .btn-main {
-            background-color: var(--accent-sage);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: opacity 0.3s;
-        }
-
-        .btn-main:hover { opacity: 0.9; }
-
         /* --- 5. 側邊欄 --- */
         .sidebar-widget {
             margin-bottom: 40px;
@@ -230,15 +178,13 @@
             display: block;
             margin-bottom: 30px;
             text-align: center;
+            text-decoration: none; /* 移除超連結底線 */
             transition: transform 0.2s;
         }
-
-        .editable-ad { cursor: pointer; }
-        .editable-ad:hover .ad-img { opacity: 0.8; }
-
-        [contenteditable="true"] { outline: none; padding: 2px; border-radius: 4px; }
-        [contenteditable="true"]:hover { background-color: #f0f0f0; }
-        [contenteditable="true"]:focus { background-color: #fff; box-shadow: 0 0 0 2px var(--accent-peach); }
+        
+        .ad-card:hover {
+            transform: translateY(-5px); /* 滑鼠移過去微微浮起 */
+        }
 
         .ad-img {
             width: 100%;
@@ -270,18 +216,15 @@
 
     <div class="container">
         
-        <main>
-            <div id="feed">
-                </div>
-
-            <section class="post-editor" id="adminPanel">
-                <h3>✎ 撰寫新日常</h3>
-                <input type="text" id="postTitle" placeholder="今天的標題...">
-                <textarea id="postContent" rows="4" placeholder="寫下一些療癒的想法..."></textarea>
-                <input type="file" id="postImage" accept="image/*">
-                <button class="btn-main" onclick="addPost()">發布文章</button>
-            </section>
-        </main>
+        <main id="feed">
+            
+            <article class="article">
+                <h2>午後的咖啡時光</h2>
+                <div class="article-meta"><span class="dot"></span> 2025.10.30</div>
+                <p>今天陽光很好，把辦公桌移到了窗邊。泡了一杯拿鐵，看著窗外的雲發呆了十分鐘。這就是所谓的「留白」吧，給生活一點喘息的空間。</p>
+                <img src="https://placehold.co/800x500/F3F4F6/AAA?text=Relaxing+View" alt="風景" class="article-img">
+            </article>
+            </main>
 
         <aside>
             <div class="sidebar-widget">
@@ -294,19 +237,17 @@
             <div class="sidebar-widget">
                 <div class="widget-title">好物推薦</div>
                 
-                <input type="file" id="ad-input-1" accept="image/*" style="display: none;" onchange="updateAdImage(this, 'ad-img-1')">
-                <div class="ad-card editable-ad">
-                    <img src="https://placehold.co/300x300/E3E6E8/888?text=Slot+1" class="ad-img" id="ad-img-1" onclick="triggerAdUpload('ad-input-1')" title="點擊更換圖片">
-                    <div class="ad-text" contenteditable="true">點此修改標題 1</div>
-                    <div class="ad-sub" contenteditable="true">例如：嘎機貓帆布袋</div>
-                </div>
+                <a href="#" class="ad-card">
+                    <img src="https://placehold.co/300x300/E3E6E8/888?text=Slot+1" class="ad-img">
+                    <div class="ad-text">嘎機貓帆布袋</div>
+                    <div class="ad-sub">陪你度過每一天</div>
+                </a>
 
-                <input type="file" id="ad-input-2" accept="image/*" style="display: none;" onchange="updateAdImage(this, 'ad-img-2')">
-                <div class="ad-card editable-ad">
-                    <img src="https://placehold.co/300x300/E3E6E8/888?text=Slot+2" class="ad-img" id="ad-img-2" onclick="triggerAdUpload('ad-input-2')" title="點擊更換圖片">
-                    <div class="ad-text" contenteditable="true">點此修改標題 2</div>
-                    <div class="ad-sub" contenteditable="true">這裡可以放任何想推薦的東西</div>
-                </div>
+                <a href="#" class="ad-card">
+                    <img src="https://placehold.co/300x300/E3E6E8/888?text=Slot+2" class="ad-img">
+                    <div class="ad-text">Gaji Time Block App</div>
+                    <div class="ad-sub">找回你的專注力</div>
+                </a>
             </div>
         </aside>
 
@@ -316,71 +257,5 @@
         &copy; 2025 Gaji Life. All Rights Reserved.
     </footer>
 
-    <script>
-        // --- 1. 文章發布功能 ---
-        function addPost() {
-            const title = document.getElementById('postTitle').value;
-            const content = document.getElementById('postContent').value;
-            const fileInput = document.getElementById('postImage');
-            
-            if(title === "" || content === "") {
-                alert("標題和內容不能留空喔～");
-                return;
-            }
-
-            let imgHtml = '';
-            if (fileInput.files && fileInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    createPostHtml(title, content, e.target.result);
-                }
-                reader.readAsDataURL(fileInput.files[0]);
-            } else {
-                createPostHtml(title, content, "https://placehold.co/800x400/E3E6E8/999?text=No+Image");
-            }
-        }
-
-        function createPostHtml(title, content, imgSrc) {
-            const feed = document.getElementById('feed');
-            
-            const article = document.createElement('article');
-            article.className = 'article';
-            
-            const date = new Date();
-            const dateStr = `${date.getFullYear()}.${date.getMonth()+1}.${date.getDate()}`;
-
-            article.style.animation = "fadeIn 1s";
-            article.innerHTML = `
-                <style>@keyframes fadeIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }</style>
-                <h2>${title}</h2>
-                <div class="article-meta"><span class="dot"></span> ${dateStr}</div>
-                <p>${content}</p>
-                <img src="${imgSrc}" class="article-img">
-            `;
-            
-            feed.insertBefore(article, feed.firstChild);
-            
-            document.getElementById('postTitle').value = '';
-            document.getElementById('postContent').value = '';
-            document.getElementById('postImage').value = '';
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // --- 2. 廣告功能 ---
-        function triggerAdUpload(inputId) {
-            document.getElementById(inputId).click();
-        }
-
-        function updateAdImage(input, imgId) {
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById(imgId).src = e.target.result;
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-    </script>
 </body>
 </html>
