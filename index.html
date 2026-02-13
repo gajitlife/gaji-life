@@ -188,7 +188,8 @@
 
         .ad-img {
             width: 100%;
-            height: auto;
+            aspect-ratio: 1/1;
+            object-fit: contain; /* <-- 修改這一行 */
             border-radius: var(--radius-soft);
             background-color: var(--line-gray-blue);
             margin-bottom: 10px;
@@ -269,6 +270,7 @@
 
 </body>
 </html>
+
 
 
 
